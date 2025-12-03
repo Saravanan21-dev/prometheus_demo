@@ -16,8 +16,10 @@ ARG OS="linux"
 COPY .build/${OS}-${ARCH}/prometheus        /bin/prometheus
 COPY .build/${OS}-${ARCH}/promtool          /bin/promtool
 COPY documentation/examples/prometheus.yml  /etc/prometheus/prometheus.yml
-COPY LICENSE                                /LICENSE
+COPY LICENSE                                /LICENSEADD npm_licenses.tar.bz2 /tmp/npm_licenses
+RUN some command using /tmp/npm_licenses
 COPY NOTICE                                 /NOTICE
+
 WORKDIR /prometheus
 RUN chown -R nobody:nobody /etc/prometheus /prometheus && chmod g+w /prometheus
 
